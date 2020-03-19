@@ -1,9 +1,16 @@
 // import L from 'leaflet'
 import React, { Component } from 'react'
-
+import { Button } from 'antd'
+const L = window.L
 class MapIndex extends Component {
+
+  constructor(props) {
+
+    super(props)
+    this.map = null
+  }
   componentDidMount() {
-    const L = window.L
+
     let normalm1 = L.tileLayer.chinaProvider('Geoq.Normal.Map', { maxZoom: 18, minZoom: 5 });
     let normalm2 = L.tileLayer.chinaProvider('Geoq.Normal.Color', { maxZoom: 18, minZoom: 5 });
     let normalm3 = L.tileLayer.chinaProvider('Geoq.Normal.PurplishBlue', { maxZoom: 18, minZoom: 5 });
@@ -16,23 +23,44 @@ class MapIndex extends Component {
       "谷歌影像": satelliteMap, "高德地图": Gaode, "高德影像": Gaodimage,
     }
     setTimeout(() => {
-      let map = L.map("maps", { center: [31.59, 120.29], zoom: 11, layers: [normalm5], zoomControl: false });
-      L.control.layers(baseLayers, null).addTo(map);
-      L.control.zoom({ zoomInTitle: '放大', zoomOutTitle: '缩小' }).addTo(map);
+      this.map = L.map("maps", { center: [31.59, 120.29], zoom: 11, layers: [normalm5], zoomControl: false });
+      L.control.layers(baseLayers, null).addTo(this.map);
+      L.control.zoom({ zoomInTitle: '放大', zoomOutTitle: '缩小' }).addTo(this.map);
 
 
-      var circle = L.circle([31.59, 120.29], 500, { color: 'red', fillColor: '#f03', fillOpacity: 0.5 }).addTo(map);
+      var circle = L.circle([31.59, 120.29], 500, { color: 'red', fillColor: '#f03', fillOpacity: 0.5 }).addTo(this.map);
     }, 200)
 
-    // let mapOptions = {
-    //   attributionControl: false
-    // }
-    // let mymap = L.map('maps', mapOptions).setView([51.505, -0.09], 13);
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
-    // { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(mymap);
+
+  }
+  mapLine = () => {
+    let latlngs = [[31.59, 120.29], [31.77, 120.56], [31.88, 120.65]];
+    let polyline = L.polyline(latlngs, { color: 'blue' }).addTo(this.map);
+  }
+  mapLink = () => {
+    let markers= [];
+    let pulseIcon = L.icon.pulse({
+      iconSize: [12, 12],
+      color: '#2f8'
+    });
+    const lng = [[31.59, 120.29], [31.77, 120.56], [31.88, 120.65]];
+    lng.map((v)=>{
+      markers.push(L.marker(v, {icon: pulseIcon}));
+    })
+   let resultLayer = L.featureGroup(markers).addTo(this.map);
   }
   render() {
-    return (<div id="maps"> </div>)
+    return (<>
+      <div id="maps">
+
+      </div>
+      <div className="button-map">
+        <Button type="primary" onClick={this.mapLine}>地图划线</Button>
+        <br/>
+        <Button type="primary" onClick={this.mapLink}>地图聚点</Button>
+      </div>
+
+    </>)
   }
 }
 export default MapIndex
