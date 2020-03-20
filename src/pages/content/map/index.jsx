@@ -14,6 +14,7 @@ class MapIndex extends Component {
     this.layer1 = null;
     this.layer2 = null;
     this.layer3 = null;
+    this.heatLayer  = null;
   }
   componentDidMount() {
 
@@ -74,7 +75,16 @@ class MapIndex extends Component {
     this.layer2 = L.featureGroup(markers).addTo(this.map).bindPopup(this.createHtml).openPopup();;
   }
   redLink = () => {
-    var heat = L.heatLayer([ [31.818, 118.32], [31.999, 118.586], [31.769, 118.685]], {radius: 25}).addTo(this.map);
+    this.clearAll();
+    let a = '31';
+    let b = '118';
+    let c = [];
+    for(let i=1;i<3000;i++){
+      let d = Math.floor(Math.random() * (1000 - 1)) + 1;
+      c.push([Number(`${a}.${d}`),Number(`${b}.${d}`)])
+    }
+    this.heatLayer = L.heatLayer(c,
+       {radius: 25,color:'red'}).addTo(this.map);
   }
   clearAll = () => {
     if (this.layer1) {
@@ -86,6 +96,10 @@ class MapIndex extends Component {
     }
     if (this.layer3) {
       this.map.removeLayer(this.layer3);
+
+    }
+    if (this.heatLayer ) {
+      this.map.removeLayer(this.heatLayer);
 
     }
   }
