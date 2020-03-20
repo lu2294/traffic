@@ -1,13 +1,19 @@
 // import L from 'leaflet'
 import React, { Component } from 'react'
 import { Button } from 'antd'
+import { observer, inject } from "mobx-react";
 const L = window.L
+
+@inject("map")
 class MapIndex extends Component {
 
   constructor(props) {
 
     super(props)
-    this.map = null
+    this.map = null;
+    this.layer1 = null;
+    this.layer2 = null;
+    this.layer3 = null;
   }
   componentDidMount() {
 
@@ -18,12 +24,12 @@ class MapIndex extends Component {
     let Gaodimage = L.layerGroup([Gaodimgem, Gaodimga]);
     let baseLayers =
     {
-      "智图地图": normalm1, "智图多彩": normalm2, "智图午夜蓝": normalm3, "智图灰色": normalm4,
-      "智图暖色": normalm5, "智图冷色": normalm6, "天地图": normal, "天地图影像": image, "谷歌地图": normalMap,
+      "智图地图": normalm1, "智图午夜蓝": normalm3, "智图灰色": normalm4,
+      "智图暖色": normalm5, "谷歌地图": normalMap,
       "谷歌影像": satelliteMap, "高德地图": Gaode, "高德影像": Gaodimage,
     }
     setTimeout(() => {
-      this.map = L.map("maps", { center: [31.59, 120.29], zoom: 11, layers: [normalm5], zoomControl: false });
+      this.map = L.map("maps", { center: [31.59, 120.29], zoom: 11, layers: [Gaode], zoomControl: false });
       L.control.layers(baseLayers, null).addTo(this.map);
       L.control.zoom({ zoomInTitle: '放大', zoomOutTitle: '缩小' }).addTo(this.map);
 
@@ -34,20 +40,54 @@ class MapIndex extends Component {
 
   }
   mapLine = () => {
+    this.clearAll();
     let latlngs = [[31.59, 120.29], [31.77, 120.56], [31.88, 120.65]];
-    let polyline = L.polyline(latlngs, { color: 'blue' }).addTo(this.map);
+    this.layer1 = L.polyline(latlngs, { color: 'blue' }).addTo(this.map);
   }
   mapLink = () => {
-    let markers= [];
+    this.clearAll();
+    let markers = [];
     let pulseIcon = L.icon.pulse({
       iconSize: [12, 12],
-      color: '#2f8'
+      color: 'blue'
     });
-    const lng = [[31.59, 120.29], [31.77, 120.56], [31.88, 120.65]];
-    lng.map((v)=>{
-      markers.push(L.marker(v, {icon: pulseIcon}));
+    const lng = [[31.59, 120.39], [31.77, 120.58], [31.88, 120.8]];
+    lng.map((v) => {
+      markers.push(L.marker(v, { icon: pulseIcon }));
     })
-   let resultLayer = L.featureGroup(markers).addTo(this.map);
+    this.layer3 = L.featureGroup(markers).addTo(this.map);
+  }
+  yaoLink = () => {
+    this.clearAll();
+    let markers = [];
+    let pulseIcon = L.icon.pulse({
+      iconSize: [12, 12],
+      color: 'red'
+    });
+    const lng = [31.76172, 117.198982];
+    this.map.setView(lng, 12)
+    markers.push(L.marker(lng, { icon: pulseIcon }));
+    this.layer2 = L.featureGroup(markers).addTo(this.map).bindPopup(this.createHtml).openPopup();;
+  }
+  clearAll = ()=>{
+    if(this.layer1){
+      this.map.removeLayer(this.layer1);
+    }
+    if(this.layer2){
+      this.map.removeLayer(this.layer2);
+
+    }
+    if(this.layer3){
+      this.map.removeLayer(this.layer3);
+
+    }
+  }
+  createHtml = ()=>{
+    const html = `
+    <div class="pic-div">
+    </div>
+    `
+    return html
   }
   render() {
     return (<>
@@ -56,8 +96,9 @@ class MapIndex extends Component {
       </div>
       <div className="button-map">
         <Button type="primary" onClick={this.mapLine}>地图划线</Button>
-        <br/>
-        <Button type="primary" onClick={this.mapLink}>地图聚点</Button>
+
+        <Button type="primary" onClick={this.mapLink} style={{ 'display': 'block', marginTop: '5px' }}>地图聚点</Button>
+        <Button type="primary" onClick={this.yaoLink} style={{ 'display': 'block', marginTop: '5px' }}>姚老师</Button>
       </div>
 
     </>)

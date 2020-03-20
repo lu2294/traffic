@@ -15,4 +15,15 @@ position: fixed;
 z-index: 9999;
 left:205px;
 bottom:10px;
+Button{
+    margin-top: 5px;
+}
+}
+.pic-div{
+    height: 100px;
+    width:200px;
+    background: url("./public//imgs/1.png") no-repeat center center;
+    background-size:90% 90%;        
+    display:inline-block;
+    
 }

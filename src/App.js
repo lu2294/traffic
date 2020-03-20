@@ -1,9 +1,15 @@
 import React from 'react';
-import Router from './pages'
+import Router from './pages';
+import {
+  Provider
+} from "mobx-react";
+import stores from './store/index'
+
 function App() {
 
-  return (
-    <Router></Router>
+  return ( <Provider {...stores } >
+    <Router > </Router> 
+    </Provider>
   );
 }
 
