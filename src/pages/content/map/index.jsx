@@ -29,19 +29,19 @@ class MapIndex extends Component {
       "谷歌影像": satelliteMap, "高德地图": Gaode, "高德影像": Gaodimage,
     }
     setTimeout(() => {
-      this.map = L.map("maps", { center: [31.59, 120.29], zoom: 11, layers: [Gaode], zoomControl: false });
+      this.map = L.map("maps", { center: [31.88, 118.89], zoom: 11, layers: [Gaode], zoomControl: false });
       L.control.layers(baseLayers, null).addTo(this.map);
       L.control.zoom({ zoomInTitle: '放大', zoomOutTitle: '缩小' }).addTo(this.map);
 
 
-      var circle = L.circle([31.59, 120.29], 500, { color: 'red', fillColor: '#f03', fillOpacity: 0.5 }).addTo(this.map);
+      var circle = L.circle([31.88, 118.88], 500, { color: 'red', fillColor: '#f03', fillOpacity: 0.5 }).addTo(this.map);
     }, 200)
 
 
   }
   mapLine = () => {
     this.clearAll();
-    let latlngs = [[31.59, 120.29], [31.77, 120.56], [31.88, 120.65]];
+    let latlngs = [[31.88, 118.432], [31.99, 118.56], [31.76, 118.65]];
     this.layer1 = L.polyline(latlngs, { color: 'blue' }).addTo(this.map);
   }
   mapLink = () => {
@@ -49,11 +49,15 @@ class MapIndex extends Component {
     let markers = [];
     let pulseIcon = L.icon.pulse({
       iconSize: [12, 12],
-      color: 'blue'
+      color: 'red'
     });
-    const lng = [[31.59, 120.39], [31.77, 120.58], [31.88, 120.8]];
-    lng.map((v) => {
-      markers.push(L.marker(v, { icon: pulseIcon }));
+    const clist = ['#dc1818','#4517b5','#202021','#e0d00e']
+    const lng = [[31.818, 118.32], [31.999, 118.586], [31.769, 118.685]];
+    lng.map((v,k) => {
+      markers.push(L.marker(v, { icon: L.icon.pulse({
+        iconSize: [12, 12],
+        color: clist[k] || 'red'
+      }) }));
     })
     this.layer3 = L.featureGroup(markers).addTo(this.map);
   }
@@ -69,20 +73,23 @@ class MapIndex extends Component {
     markers.push(L.marker(lng, { icon: pulseIcon }));
     this.layer2 = L.featureGroup(markers).addTo(this.map).bindPopup(this.createHtml).openPopup();;
   }
-  clearAll = ()=>{
-    if(this.layer1){
+  redLink = () => {
+    var heat = L.heatLayer([ [31.818, 118.32], [31.999, 118.586], [31.769, 118.685]], {radius: 25}).addTo(this.map);
+  }
+  clearAll = () => {
+    if (this.layer1) {
       this.map.removeLayer(this.layer1);
     }
-    if(this.layer2){
+    if (this.layer2) {
       this.map.removeLayer(this.layer2);
 
     }
-    if(this.layer3){
+    if (this.layer3) {
       this.map.removeLayer(this.layer3);
 
     }
   }
-  createHtml = ()=>{
+  createHtml = () => {
     const html = `
     <div class="pic-div">
     </div>
@@ -98,6 +105,7 @@ class MapIndex extends Component {
         <Button type="primary" onClick={this.mapLine}>地图划线</Button>
 
         <Button type="primary" onClick={this.mapLink} style={{ 'display': 'block', marginTop: '5px' }}>地图聚点</Button>
+        <Button type="primary" onClick={this.redLink} style={{ 'display': 'block', marginTop: '5px' }}>热力图</Button>
         <Button type="primary" onClick={this.yaoLink} style={{ 'display': 'block', marginTop: '5px' }}>姚老师</Button>
       </div>
 
