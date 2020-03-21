@@ -34,7 +34,7 @@ export default class Index extends React.Component {
     render() {
         return (<Layout className="main-content">
             <Header className="main-header">
-                {/* <HeaderContent /> */}
+                <HeaderContent />
             </Header>
             <BrowserRouter>
                 <Layout>
