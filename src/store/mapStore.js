@@ -2,7 +2,7 @@ import { observable, action } from 'mobx'
 
 export default class mapStroe{
     @observable zoom = 10
-    @observable tileUrl = "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}"
+    @observable tileUrl = "http://15.75.0.255:25003/v{s}/tile?x={x}&y={y}&z={z}";
 
     @action
     update = (value,key) =>{
