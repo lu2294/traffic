@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from './pages';
+import Router from './router/index.js';
 import {
   Provider
 } from "mobx-react";
