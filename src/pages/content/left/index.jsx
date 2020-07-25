@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Button} from 'antd';
+// import {Button} from 'antd';
 import './index.scss'
 class Left extends React.Component {
   constructor(props) {
