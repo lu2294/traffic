@@ -114,7 +114,7 @@ class MapIndex extends Component {
         url={tileUrl}
         subdomains={['3']}
       />
-      {this.state.map ?this.renderCirleArea(): null}
+      {/* {this.state.map ?this.renderCirleArea(): null} */}
     </Map>
 </div>
    )

@@ -1,6 +1,5 @@
 
 import React from 'react'
-import {Spin, Layout} from 'antd';
 import './index.scss'
 class Left extends React.Component {
   constructor(props) {

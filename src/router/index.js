@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Prompt, BrowserRouter,HashRouter } from 'react-router-dom';
+import { Switch, Route,HashRouter } from 'react-router-dom';
 import {Spin } from 'antd';
 import '../index.css'
 const Home = React.lazy(() => import('../pages/index'));

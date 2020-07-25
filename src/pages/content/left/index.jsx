@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Spin, Layout} from 'antd';
+import {Button} from 'antd';
 import './index.scss'
 class Left extends React.Component {
   constructor(props) {
@@ -9,13 +9,10 @@ class Left extends React.Component {
       platformLoading: false
     }
   }
- 
 
   render() {
-  
     return (
       <div className="content-left">
-
       </div>
      
     )

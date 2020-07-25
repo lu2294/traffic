@@ -1,11 +1,10 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
 import './index.scss';
 import HeaderContent from './content/header';
-import Map from './content/map';
+// import Map from './content/map';
+import Maps from './content/maps';
 import Left from './content/left';
 import Right from './content/right';
-const { Header, Footer, Sider, Content } = Layout;
 
 
 export default class Index extends React.Component {
@@ -21,7 +20,7 @@ export default class Index extends React.Component {
         return (<>
         <HeaderContent/>
         <div className="monitor">
-            <Map/>
+            <Maps/>
 
             <Left/>
             <Right/>
