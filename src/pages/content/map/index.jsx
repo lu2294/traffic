@@ -94,7 +94,7 @@ class MapIndex extends Component {
     )
   }
   render() {
-    const {tileUrl,zoom} = this.props.map
+    const {tileUrl,zoomInit} = this.props.map
    console.log(this.map,66666)
     return (<div>
 
@@ -108,7 +108,7 @@ class MapIndex extends Component {
       minZoom={2}
       zoomControl={false}
       zoomAnimationThreshold = {1}
-      zoom={zoom}>
+      zoom={zoomInit}>
       <TileLayer
         key={".TileLayer2"}
         url={tileUrl}

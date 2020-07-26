@@ -289,6 +289,7 @@ module.exports = function(webpackEnv) {
       alias: {
         components: path.resolve(__dirname, '../src/components'),
         img: path.resolve(__dirname, '../src/public/img'),
+        services: path.join(__dirname, '../src/services'),
         'react-native': 'react-native-web',
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
