@@ -1,6 +1,7 @@
 
 import React from 'react'
 import './index.scss'
+import Pies from './charts-pies'
 class Left extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class Left extends React.Component {
   
     return (
       <div className="content-right">
-
+        <Pies />
       </div>
      
     )
