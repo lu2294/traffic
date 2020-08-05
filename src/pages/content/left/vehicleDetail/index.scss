@@ -1,0 +1,32 @@
+.vehicle-detail {
+    position: fixed;
+    top: 480px;
+    left: 860px;
+    height: 440px;
+    width: 590px;
+    z-index: 999;
+    transition: left 1s;
+    background: rgba(3, 16, 51, 0.7);
+    .vehicle-info {
+        .vehicle-title {
+            font-family: PingFangSC-Semibold;
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .vehicle-content {
+            font-family: PingFangSC-Semibold;
+            color: #ffffff;
+            font-size: 12px;
+            .content-item {
+                margin-bottom: 2px;
+            }
+        }
+        width: 300px;
+        height: 140px;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+        border: 1px solid rgba(36, 78, 128, 1);
+    }
+}

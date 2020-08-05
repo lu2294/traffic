@@ -1,0 +1,33 @@
+div {
+    box-sizing: border-box;
+}
+.card {
+    background: rgba(3, 16, 51, 0.7);
+    border: 2px solid rgba(2, 77, 134, 1);
+    border-radius: 8px;
+    // background: transparent;
+    .title {
+        background-color: rgba(2, 77, 134, 0.5);
+        font-family: PingFangSC-Semibold;
+        font-size: 16px;
+        line-height: 32px;
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        border-bottom: 1px solid transparent;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        .text {
+            color: #00c8d1;
+            font-size: 24px;
+        }
+    }
+    .content {
+        // min-height: 30vh;
+        font-family: PingFangSC-Regular;
+        color: #ffffff;
+        padding: 11px 20px 0;
+        overflow: hidden;
+    }
+}

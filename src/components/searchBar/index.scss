@@ -1,0 +1,23 @@
+.search {
+    margin-bottom: 10px;
+    .search-bar {
+        border: 1px solid rgba(36, 78, 128, 1);
+        background-color: transparent;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .ant-input-affix-wrapper > input.ant-input {
+        background-color: transparent;
+        color: #fff;
+    }
+    .ant-input-suffix {
+        cursor: pointer;
+    }
+    .search-icon {
+        color: #fff;
+        font-size: 18px;
+    }
+}

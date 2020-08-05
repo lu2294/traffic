@@ -1,6 +1,13 @@
-import mapStore from './mapStore'
+import CommonStore from './CommonStore';
+import map from './mapStore';
+import echart from './echartStore';
+import RoadIndicator from './RoadIndicator';
 
 const store = {
-    map:new mapStore()
+    CommonStore,
+    map,
+    echart,
+    RoadIndicator
 }
+
 export default store

@@ -1,0 +1,106 @@
+.progress-bar {
+    .ant-picker {
+        border: 1px solid rgba(36, 78, 128, 1);
+        background: transparent;
+        color: #fff;
+        padding-left: 12px;
+        padding-right: 11px;
+        // padding-bottom: 0px;
+        height: 32px;
+        width: 180px;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+    }
+    .ant-picker-suffix {
+        color: #d9d9d9;
+    }
+    .ant-picker-input > input {
+        color: #fff;
+    }
+    .ant-picker-clear {
+        background: transparent;
+        color: #d9d9d9;
+    }
+    .silider {
+        border: 1px solid rgba(36, 78, 128, 1);
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        height: 32px;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        // justify-content: space-evenly;
+        padding: 0 16px;
+        .ant-slider {
+            flex: 1;
+        }
+        .time-start {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: PingFangSC-Regular;
+            color: #ffffff;
+            margin-right: 12px;
+        }
+        .time-end {
+            // width: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: PingFangSC-Regular;
+            color: #ffffff;
+            margin-left: 12px;
+        }
+        .ant-slider-handle {
+            width: 12px;
+            height: 12px;
+            // border-color: #1890ff;
+            border-color: #0f54a0;
+            background-color: #1890ff;
+        }
+        .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+            border-color: #0f54a0;
+            background-color: #1890ff;
+        }
+        .ant-slider-track {
+            background-color: #1890ff;
+        }
+    }
+    .current-road {
+        border: 1px solid rgba(36, 78, 128, 1);
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        height: 32px;
+        line-height: 32px;
+        margin: 10px auto;
+        display: flex;
+        // justify-content: space-evenly;
+        padding: 0 16px;
+        font-family: PingFangSC-Regular;
+        color: #feab14;
+    }
+    .play-btn {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid rgba(36, 78, 128, 1);
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    .play-btn2 {
+        cursor: pointer;
+        font-family: PingFangSC-Regular;
+        color: #ffffff;
+        font-size: 14px;
+        width: 60px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgba(36, 78, 128, 1);
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+    }
+}

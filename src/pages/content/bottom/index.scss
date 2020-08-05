@@ -1,0 +1,117 @@
+.bottom-content {
+  position: fixed;
+  // background: red;
+  width: 56%;
+  height: 8vh;
+  // line-height: 8vh;
+  bottom: 7vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 13% 72% 10%;
+  grid-gap: 0.5vw;
+  .left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .icon-grid{
+      display: grid;
+      grid-template-columns: 60% 40%;
+    }
+    .icon{
+      width: 31%;
+      cursor: pointer;
+      height: 8vh;
+      border: 1px solid rgba(36,78,128,1);
+      box-shadow: 0px 0px 10px #4471F0 inset;
+      .icon-img1{
+        height: 60%;
+        width: 100%;
+        background-size: 30%;
+        background: url('../../../assets/imgs/weichuzhi.png') no-repeat center;
+      }
+      .icon-img2{
+        height: 60%;
+        width: 100%;
+        background-size: 30%;
+        background: url('../../../assets/imgs/yichuzhi.png') no-repeat center;
+      }
+      .icon-img3{
+        height: 100%;
+        background-size: 30%;
+        background: url('../../../assets/imgs/end.png') no-repeat center;
+      }
+      .icon-font{
+        height: 40%;
+        color: white;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+      .icon-font1{
+        color: white;
+        margin-right: 40%;
+        writing-mode:tb-rl;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: 2px;
+      }
+    }
+    .checkfalse{
+      opacity: 0.5;
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    .gird-absolute{
+      position: absolute;
+      top: -9vh;
+    }
+    .icon{
+      width: 40%;
+      cursor: pointer;
+      height: 8vh;
+      border: 1px solid rgba(36,78,128,1);
+      box-shadow: 0px 0px 10px #4471F0 inset;
+
+    }
+    .icon-font{
+      height: 40%;
+      color: white;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      // letter-spacing: 1px;
+    }
+    .icon-img5{
+      height: 60%;
+      width: 100%;
+      background-size: 30%;
+      background: url('../../../assets/imgs/duixiang.png') no-repeat center;
+    }
+    .icon-img4{
+      height: 100%;
+      background-size: 30%;
+      background: url('../../../assets/imgs/front.png') no-repeat center;
+    }
+    .icon-grid{
+      display: grid;
+      grid-template-columns: 40% 60%;
+    }
+    .icon-font1{
+      color: white;
+      // margin-left: 40%;
+      writing-mode:tb-rl;
+      font-size: 18px;
+      text-align: center;
+      letter-spacing: 2px;
+      
+    }
+  }
+}

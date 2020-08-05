@@ -1,0 +1,52 @@
+.section-detail {
+    position: fixed;
+    top: 120px;
+    left: 860px;
+    height: 340px;
+    width: 800px;
+    z-index: 999;
+    transition: left 1s;
+    background: rgba(3, 16, 51, 0.7);
+    .top-margin {
+        margin-top: 22px;
+    }
+    .ant-btn:hover,
+    .ant-btn:focus,
+    .ant-btn:active {
+        background: transparent;
+        border: 1px solid rgba(36, 78, 128, 1);
+        color: #ffffff;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+    }
+
+    .btn-style1 {
+        border: 1px solid rgba(36, 78, 128, 1);
+        background: rgba(68, 113, 240, 0.3) !important;
+        color: #ffffff;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        font-size: 16px;
+        height: 40px;
+        padding: 9px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+    }
+
+    .btn-style2 {
+        border: 1px solid rgba(36, 78, 128, 1);
+        background: transparent !important;
+        color: #ffffff;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        font-size: 16px;
+        height: 40px;
+        padding: 9px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+    }
+    .btn-box {
+        display: flex;
+    }
+}

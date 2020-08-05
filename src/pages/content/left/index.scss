@@ -1,10 +1,96 @@
-.content-left{
-    position: fixed;
-    top: 100px;
-    left: 0;
-    height: 80vh;
-    width: 300px;
-    z-index: 999;
-    transition: left 1s;
-    background-image: linear-gradient(-90deg, rgba(32, 34, 41, 0.9) 0%, rgba(28, 35, 42, 0.8) 100%);    border: 1px solid rgba(255,255,255,0.1);
-}
+// .content-left {
+//     position: fixed;
+//     top: 100px;
+//     left: 0;
+//     height: 80vh;
+//     width: 40vw;
+//     z-index: 1999;
+//     transition: left 1s;
+//     background: rgba(3, 16, 51, 0.7);
+//     // background-image: linear-gradient(-90deg, rgba(32, 34, 41, 0.9) 0%, rgba(28, 35, 42, 0.8) 100%);    border: 1px solid rgba(255,255,255,0.1);
+
+//     .style1 {
+//         color: #fff;
+//     }
+//     .style2 {
+//         background-color: rgba(21, 63, 150, 0.5);
+//         color: #fff;
+//     }
+
+//     .ant-table-tbody > tr.ant-table-row:hover > td {
+//         background: transparent;
+//     }
+
+//     .ant-table-thead > tr > th {
+//         background-color: rgba(21, 63, 150, 0.5);
+//         color: #fff;
+//         padding-left: 12px;
+//         padding-right: 12px;
+//         padding-top: 8px;
+//         padding-bottom: 8px;
+//         border-right: 1px solid #316bbd !important;
+//         border-bottom: 1px solid #316bbd !important;
+//     }
+
+//     .ant-table.ant-table-bordered > .ant-table-container {
+//         border: 1px solid #316bbd;
+//     }
+
+//     .ant-table-tbody > tr > td {
+//         padding-left: 12px;
+//         padding-right: 12px;
+//         padding-top: 8px;
+//         padding-bottom: 8px;
+//         border-right: 1px solid #316bbd !important;
+//         border-bottom: 1px solid #316bbd !important;
+//     }
+
+//     .ant-table {
+//         background: transparent;
+//         // border: 1px solid red;
+//         // border: 1px solid #316bbd;
+//         // border-left: none;
+//     }
+
+//     .ant-table.ant-table-bordered > .ant-table-title {
+//         padding: 9px 12px 7px;
+//         border: 1px solid #316bbd;
+//         border-bottom: 0;
+//     }
+
+//     .ant-table .ant-table-body::-webkit-scrollbar {
+//         /*滚动条整体样式*/
+//         width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+//     }
+//     .ant-table .ant-table-body::-webkit-scrollbar-thumb {
+//         /*滚动条里面小方块*/
+//         border-radius: 10px;
+//         background: #316bbd;
+//     }
+//     .ant-table .ant-table-body::-webkit-scrollbar-track {
+//         /*滚动条里面轨道*/
+//         border-radius: 10px;
+//         background: transparent;
+//     }
+
+//     .ant-table-cell-scrollbar {
+//         box-shadow: none;
+//     }
+//     .ant-pagination-simple .ant-pagination-simple-pager {
+//         margin-right: 16px;
+//     }
+//     .ant-pagination-simple .ant-pagination-simple-pager,
+//     .ant-pagination-simple .ant-pagination-simple-pager input,
+//     .ant-pagination-slash {
+//         background: transparent;
+//         border: none;
+//         color: #fff;
+//     }
+//     .ant-pagination-simple .ant-pagination-simple-pager input {
+//         margin-right: 0;
+//         padding: 0;
+//     }
+//     .ant-btn > .anticon + span, .ant-btn > span + .anticon {
+//         margin-left: 4px;
+//     }
+// }

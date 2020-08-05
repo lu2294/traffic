@@ -1,10 +1,102 @@
 .content-right{
     position: fixed;
-    top: 100px;
-    right: 0;
-    height: 80vh;
-    width: 50vw;
+    top: 120px;
+    right: 40px;
+    height: 900px;
+    width: 800px;
     z-index: 999;
     transition: left 1s;
-    background-image: linear-gradient(-90deg, rgba(32, 34, 41, 0.9) 0%, rgba(28, 35, 42, 0.8) 100%);    border: 1px solid rgba(255,255,255,0.1);
+    // background-image: linear-gradient(-90deg, rgba(32, 34, 41, 0.9) 0%, rgba(28, 35, 42, 0.8) 100%);
+    background: rgba(3,16,51,0.70);
+    border: 2px solid rgba(2,77,134,1);
+    border-radius: 5px;
+    .right-title {
+        width: 100%;
+        padding-left: 16px;
+        font-family: PingFangSC-Semibold;
+        font-size: 24px;
+        color:#00C8D1;
+        background-color: rgba(36,78,128,0.5);
+        height: 32px;
+        line-height: 32px;
+    }
+    .search-wrapper {
+        margin: 0 40px;
+        width: 720px;
+    }
 }
+// .style-even {
+//     background: rgba(3,16,51,0.70)
+// }
+// .style-odd {
+//     background-color: rgba(21, 63, 150, 0.5);
+  
+// }
+// .ant-table {
+//     background: transparent;
+// }
+// .ant-table-tbody > tr.ant-table-row:hover > td {
+//     background: transparent;
+// }
+// //修改外边框
+// .ant-table.ant-table-bordered > .ant-table-container {
+//     border: 2px solid #316bbd;
+//     border-right: 0;
+//     border-bottom: 0;
+// }
+// // 修改内边框
+// .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > thead > tr > th {
+//     border-right: 2px solid #316bbd;
+// }
+// .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > thead > tr > th {
+//     border-right: 2px solid #316bbd;
+// }
+// .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tbody > tr > td {
+//     border-right: 2px solid #316bbd;
+// }
+
+// .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tbody > tr > td {
+//     border-right: 2px solid #316bbd;
+// }
+// .ant-table-tbody > tr > td {
+//     border-bottom: 2px solid #316bbd;
+//     padding-left: 12px;
+//     padding-right: 12px;
+//     padding-top: 8px;
+//     padding-bottom: 8px;
+// }
+
+
+// .ant-table-thead > tr > th {
+//     background-color: rgba(21, 63, 150, 0.5);
+//     color: #fff;
+//     padding-left: 12px;
+//     padding-right: 12px;
+//     padding-top: 8px;
+//     padding-bottom: 8px;
+//     border-bottom: 2px solid #316bbd;
+// }
+// .ant-table .ant-table-body::-webkit-scrollbar {
+//     /*滚动条整体样式*/
+//     background: transparent;
+//     width: 0; /*高宽分别对应横竖滚动条的尺寸*/
+// }
+
+// // .ant-table .ant-table-body::-webkit-scrollbar-thumb {
+// //     /*滚动条里面小方块*/
+// //     border-radius: 10px;
+// //     background: #316bbd;
+// // }
+// // .ant-table .ant-table-body::-webkit-scrollbar-track {
+// //     /*滚动条里面轨道*/
+// //     border-radius: 10px;
+// //     background: transparent;
+// // }
+
+// // .ant-table-body{
+// //     overflow-y: hidden!important;
+// //   }
+  
+// //   .ant-table-body:hover{
+// //     overflow-y: scroll!important;
+// //   }

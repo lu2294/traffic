@@ -1,0 +1,91 @@
+.scroll-table {
+    margin-bottom: 10px;
+    .style1 {
+        color: #fff;
+    }
+    .style2 {
+        background-color: rgba(21, 63, 150, 0.5);
+        color: #fff;
+    }
+
+    .ant-table {
+        background: transparent;
+        .ant-table-container {
+            .ant-table-header {
+                colgroup {
+                    col:last-child {
+                        width: 6px !important;
+                    }
+                }
+            }
+        }
+    }
+    .ant-table-tbody > tr.ant-table-row:hover > td {
+        background: transparent;
+    }
+
+    .ant-table-thead > tr > th {
+        background-color: rgba(21, 63, 150, 0.5);
+        color: #fff;
+        border-bottom: 1px solid #316bbd;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-left: 1px solid #316bbd;
+    }
+
+    .ant-table-thead > tr > th:last-child {
+        border-left: 1px solid transparent;
+    }
+
+    .ant-table-tbody > tr > td {
+        border-bottom: 1px solid #316bbd;
+        border-left: 1px solid #316bbd;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .ant-table-tbody > tr:last-child > td {
+        border-bottom: none;
+    }
+
+    .ant-table {
+        background: transparent;
+        // border: 1px solid red;
+        border: 1px solid #316bbd;
+        border-left: none;
+        .ant-table-placeholder {
+            .ant-table-cell {
+                background: transparent;
+                color: #fff;
+            }
+        }
+    }
+
+    .ant-table-title {
+        padding: 9px 12px 7px;
+        border-left: 1px solid #316bbd;
+        border-bottom: 1px solid #316bbd;
+    }
+    .ant-table .ant-table-body::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
+    }
+    .ant-table .ant-table-body::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        border-radius: 4px;
+        background: #316bbd;
+    }
+    .ant-table .ant-table-body::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        border-radius: 10px;
+        background: transparent;
+    }
+
+    .ant-table-cell-scrollbar {
+        box-shadow: none;
+    }
+}

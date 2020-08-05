@@ -1,22 +1,23 @@
+import React from 'react';
+import RoadIndicator from './roadIndicator';
+import SectionDetail from './sectionDetail';
+import VehicleDetail from './vehicleDetail';
+import './index.scss';
 
-import React from 'react'
-// import {Button} from 'antd';
-import './index.scss'
 class Left extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      platformLoading: false
+    constructor(props) {
+        super(props);
     }
-  }
 
-  render() {
-    return (
-      <div className="content-left">
-      </div>
-     
-    )
-  }
+    render() {
+        return (
+            <>
+                <RoadIndicator />
+                <SectionDetail />
+                <VehicleDetail />
+            </>
+        )
+    }
 }
 
 Left.propTypes = {

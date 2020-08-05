@@ -1,10 +1,16 @@
 import React from 'react';
+import ScaleBox from 'react-scale-box';
 import './index.scss';
 import HeaderContent from './content/header';
-// import Map from './content/map';
-import Maps from './content/maps';
+import Maps from './content/reactMapbox';
+// import Map from './content/mapbox';
 import Left from './content/left';
 import Right from './content/right';
+import Bottom from './content/bottom';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+import { ConfigProvider } from 'antd';
 
 
 export default class Index extends React.Component {
@@ -17,15 +23,14 @@ export default class Index extends React.Component {
     componentDidMount() {
     }
     render() {
-        return (<>
-        <HeaderContent/>
-        <div className="monitor">
-            <Maps/>
-
-            <Left/>
-            <Right/>
-        </div>
-        </>
+        return (
+            <ConfigProvider locale={zh_CN}>
+                <HeaderContent />
+                <Maps />
+                <Left />
+                <Right />
+                <Bottom />
+            </ConfigProvider>
         )
 
     }

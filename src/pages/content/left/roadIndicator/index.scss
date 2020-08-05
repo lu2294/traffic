@@ -1,0 +1,50 @@
+.roadIndicator {
+    // border: 2px solid rgba(2, 77, 134, 1);
+    // border-radius: 8px;
+    overflow: hidden;
+    position: fixed;
+    top: 120px;
+    left: 40px;
+    height: 850px;
+    width: 800px;
+    z-index: 999;
+    transition: left 1s;
+    background: rgba(3, 16, 51, 0.7);
+    .top-margin {
+        margin-top: 32px;
+    }
+    .image-warpper {
+        display: flex;
+        justify-content: center;
+        margin-top: -10px;
+        .image-svg {
+            width: 80px;
+            height: 20px;
+        }
+    }
+
+    // .ant-modal-content {
+    //     background: transparent;
+    //     .ant-modal-close {
+    //         color: #fff;
+    //     }
+    //     .ant-modal-header {
+    //         background-color: rgba(2, 77, 134, 0.5);
+    //         border-bottom: 1px solid transparent;
+    //         padding: 8px 16px;
+    //         .ant-modal-title {
+    //             font-family: PingFangSC-Semibold;
+    //             color: #00c8d1;
+    //             font-size: 24px;
+    //             line-height: 32px;
+
+    //             // display: flex;
+    //             // align-items: center;
+    //             // padding: 8px 16px;
+    //         }
+    //     }
+    //     .ant-modal-body {
+    //         padding: 20px;
+    //     }
+    // }
+}

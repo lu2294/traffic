@@ -1,13 +1,12 @@
 import React from 'react';
 import './index.scss';
 
-
-
-export default class Header extends React.Component {
-    render() {
-        return (<div className="HeaderOutter">
+function Header(props) {
+        return (
+        <div className="HeaderOutter">
+            
         </div>
         )
-
-    }
 }
+
+export default Header
