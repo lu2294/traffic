@@ -3,7 +3,7 @@
     .search-bar {
         border: 1px solid rgba(36, 78, 128, 1);
         background-color: transparent;
-        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset, rgba(68, 113, 240, 0.5) -2px -2px 7px inset;
         height: 40px;
         line-height: 40px;
         padding-left: 16px;
@@ -17,7 +17,7 @@
         cursor: pointer;
     }
     .search-icon {
-        color: #fff;
-        font-size: 18px;
+        width: 16px;
+        height: 16px;
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button, Space } from 'antd';
+import { Table, Button } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types'
 
@@ -29,7 +29,7 @@ export default class PageUpTable extends Component {
                     columns={columns}
                     dataSource={data}
                     bordered
-                    locale={{emptyText:'暂无数据'}}
+                    locale={{ emptyText: '暂无数据' }}
                     pagination={{ 'pageSize': 4, 'itemRender': itemRender, 'simple': true }}
                     rowClassName={(record, index) => { return index % 2 === 0 ? ' style1' : 'style2' }}
                 />

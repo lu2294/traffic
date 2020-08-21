@@ -2,18 +2,18 @@
     // border: 2px solid rgba(2, 77, 134, 1);
     // border-radius: 8px;
     overflow: hidden;
+    transition: 0.5s left linear;
     position: fixed;
     top: 120px;
     left: 40px;
-    height: 850px;
     width: 800px;
     z-index: 999;
-    transition: left 1s;
     background: rgba(3, 16, 51, 0.7);
     .top-margin {
-        margin-top: 32px;
+        margin-top: 20px;
     }
-    .image-warpper {
+    .image-wrapper {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         margin-top: -10px;
@@ -23,28 +23,32 @@
         }
     }
 
-    // .ant-modal-content {
-    //     background: transparent;
-    //     .ant-modal-close {
-    //         color: #fff;
-    //     }
-    //     .ant-modal-header {
-    //         background-color: rgba(2, 77, 134, 0.5);
-    //         border-bottom: 1px solid transparent;
-    //         padding: 8px 16px;
-    //         .ant-modal-title {
-    //             font-family: PingFangSC-Semibold;
-    //             color: #00c8d1;
-    //             font-size: 24px;
-    //             line-height: 32px;
+    .current-road {
+        border: 1px solid rgba(36, 78, 128, 1);
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset, rgba(68, 113, 240, 0.5) -2px -2px 7px inset;
+        height: 32px;
+        line-height: 32px;
+        margin: 10px auto;
+        display: flex;
+        // justify-content: space-evenly;
+        padding: 0 16px;
+        font-family: PingFangSC-Regular;
+        color: #feab14;
+    }
 
-    //             // display: flex;
-    //             // align-items: center;
-    //             // padding: 8px 16px;
-    //         }
-    //     }
-    //     .ant-modal-body {
-    //         padding: 20px;
-    //     }
-    // }
+    .show-part {
+        max-height: 600px;
+        transition: 0.5s max-height linear;
+        overflow: hidden;
+    }
+
+    .hide-part {
+        transition: 0.5s max-height linear;
+        max-height: 0px;
+        overflow: hidden;
+    }
+}
+
+.left-hide {
+    left: -800px;
 }

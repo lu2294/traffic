@@ -11,10 +11,8 @@ class websocket extends React.Component {
             socketUrl: '127.0.0.1',
             timeout: 5000,
             socketMessage: (receive) => {
-                console.log(receive);  //后端返回的数据，渲染页面
             },
             socketClose: (msg) => {
-                console.log(msg);
             },
             socketError: () => {
                 console.log(this.state.taskStage + '连接建立失败');

@@ -1,0 +1,127 @@
+body
+{
+    margin:0px;
+}
+
+.mvideo-area
+{
+    display:flex;
+}
+
+.mvideo-container
+{
+    width:30%;
+    justify-content: space-around;
+}
+.video-area
+{
+	width:100%;
+	height:100%;
+	top:0px;
+    position: absolute;
+	margin: auto;
+}
+
+.data-loading
+{
+    color:white;
+    text-align:center;
+    width:100%;
+    height:100%;
+    background:black;
+    font-size:18px;
+    display:none;
+}
+
+.data-loading p
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.video-filter
+{
+	margin-bottom:20px;
+}
+
+.video-setting
+{
+    margin:10px;
+}
+
+.video-filter .video-setting .flv-buffer-size
+{
+    width: 60px;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.video-filter .video-setting  .flv-buffer-size-label
+{
+    margin-left:30px;
+}
+
+.video-filter input[type=text]
+{
+	width: 100%;
+    margin-bottom: 5px;
+    height: 30px;
+}
+
+.video-filter button
+{
+    width: 45%;
+    height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    border-style: solid;
+    margin-top: 5px;
+    background: transparent;
+    font-size: 20px;
+    cursor:pointer;
+}
+
+.video-filter button:focus
+{
+	outline: none;
+}
+
+.video-filter .submit
+{
+    margin-left: 140px;
+    border-color:rgba(0,193,222,.5);
+}
+
+.video-filter .change
+{
+    border-color:green;
+}
+
+.video-filter .submit:hover
+{
+    background:floralwhite;
+}
+
+.video-filter .change:hover
+{
+    border-color:green;
+    background:floralwhite;
+}
+@media screen(max-width:980) {
+	width:100%;
+}
+
+.prism-player .prism-ErrorMessage .prism-error-operation .prism-button-orange
+{
+    display:none!important;
+}
+
+.meta-tip
+{
+    position:absolute;
+    top:30px;
+    left:50px;
+    display:none;
+}

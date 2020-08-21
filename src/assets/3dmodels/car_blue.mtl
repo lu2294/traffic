@@ -1,0 +1,24 @@
+# Created by Metasequoia
+
+newmtl bluematerial
+Ka 0.64456 0.64456 0.64456
+Kd 0.19275 0.19275 0.19275
+Ks 0.00000 0.00000 0.00000
+Ns 5.00000
+map_Kd cars-image0.jpg
+
+newmtl mat1
+Ka 0.24576 0.24576 0.24576
+Kd 0.32768 0.32768 0.32768
+Ks 0.00000 0.00000 0.00000
+Ns 5.00000
+map_Kd cars-image1.jpg
+
+newmtl mat2
+Ka 0.24576 0.24576 0.24576
+Kd 0.32768 0.32768 0.32768
+Ks 0.00000 0.00000 0.00000
+Ns 5.00000
+map_Kd cars-image2.jpg
+
+

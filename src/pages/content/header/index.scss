@@ -1,20 +1,79 @@
-
 .HeaderOutter {
-    width: 100%;
-    height: 100px;
-    line-height: 100px;
-    color: #fff;
-    display: flex;
-    // font-size: 16px;
-    // background-image: linear-gradient(-90deg, rgba(32, 34, 41, 0.9) 0%, rgba(28, 35, 42, 0.8) 100%);
-    background-image: url('../../../assets/imgs/Header.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    // border: 1px solid rgba(255,255,255,0.1);
-    position: fixed;
+  width: 100%;
+  height: 100px;
+  // line-height: 100px;
+  color: #fff;
+  display: flex;
+  // font-size: 16px;
+  // background-image: linear-gradient(-90deg, rgba(32, 34, 41, 0.9) 0%, rgba(28, 35, 42, 0.8) 100%);
+  background-image: url("../../../assets/imgs/Header.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  // border: 1px solid rgba(255,255,255,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  // font-size: 0.8rem;
+  // clip-path: polygon(0% 0%,100% 0%,100% 100%,70% 85%,65% 100%,35% 100%,30% 85%,0% 100%);
+  .temp-wrapper {
+    position: absolute;
+    right: 350px;
     top: 0;
-    left: 0;
-    z-index: 100;
-    // font-size: 0.8rem;
-    // clip-path: polygon(0% 0%,100% 0%,100% 100%,70% 85%,65% 100%,35% 100%,30% 85%,0% 100%);
+    width: 250px;
+    height: 100%;
+    // line-height: 70px;
+    display: flex;
+    .temp-img {
+      width: 60px;
+      height: 60px;
+      margin-top: 10px;
+    }
+    .temp-str {
+      flex: 1;
+      line-height: 80px;
+      font-size: 40px;
+      padding-left: 10px;
+    }
   }
+  .close-wrapper {
+    height: 100%;
+    position: absolute;
+    right: 50px;
+    // top: 10px;
+    line-height: 103px;
+    .anticon-logout {
+      font-size: 36px;
+    }
+  }
+  .datetime-wrapper {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    display: flex;
+    .datetime {
+      flex: 2;
+      text-align: center;
+      font-size: 50px;
+      line-height: 80px;
+      font-weight: bold;
+    }
+    .dateday {
+      flex: 1;
+      font-size: 20px;
+      .dayStr {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+      }
+      .weekdayStr {
+        height: 50px;
+        line-height: 10px;
+        text-align: center;
+        // margin-top: -15px;
+      }
+    }
+  }
+}

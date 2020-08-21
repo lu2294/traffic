@@ -1,7 +1,6 @@
 export const drawLine = (map, data, color, id) => {
-    // var map = window.mainMap;
     if (map) {
-        map.on('load', function () {
+        // map.on('load', function () {
             map.addLayer({
                 "id": id,
                 "type": "line",
@@ -25,48 +24,36 @@ export const drawLine = (map, data, color, id) => {
                     "line-width": 6
                 }
             });
-        });
+        // });
     }
 
 }
 
-export const drawSpot = (map, mapboxgl, color, id) => {
+export const drawSpot = (map, mapboxgl, color, data) => {
+    let list = []
+    data.forEach((v)=>{
+        list.push({
+            "type": "Feature",
+            "color": v.eventStatus ? 'type2': 'type1',
+            "data":v,
+            "properties":
+            {
+                "marker-color": "#008000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "name": "杭州"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [v.lng, v.lat]
+            }
+        })
+    })
     let markerList = []
     var geojson = {
         "type": "FeatureCollection",
-        "features":
-            [
-                {
-                    "type": "Feature",
-                    "color": 'type1',
-                    "properties":
-                    {
-                        "marker-color": "#008000",
-                        "marker-size": "medium",
-                        "marker-symbol": "",
-                        "name": "杭州"
-                    },
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [121.475197, 31.232767]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "color": 'type2',
-                    "properties":
-                    {
-                        "marker-color": "#008000",
-                        "marker-size": "medium",
-                        "marker-symbol": "",
-                        "name": "杭州"
-                    },
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [121.487324, 31.229663]
-                    }
-                },
-            ]
+        "features":list
+            
     };
     geojson.features.forEach(function (marker) {
         let el = document.createElement('div');
@@ -85,7 +72,7 @@ export const drawSpot = (map, mapboxgl, color, id) => {
                     className: "popup"
                 }
             ) // add popups
-                .setHTML(renderHtml(1)))
+                .setHTML(renderHtml(marker.data)))
             .addTo(map)
         markerList.push(markerLayer)
         // var el2 = document.createElement('span');
@@ -101,10 +88,10 @@ export const drawSpot = (map, mapboxgl, color, id) => {
 function renderHtml(data) {
     return `<div class="popup-content">
         <ul>
-            <li><span>事件类型 ：</span><span>交通事故</span></li>
-            <li><span>事件时间 ：</span><span>2020.6.18 18:30</span></li>
+            <li><span>事件类型 ：</span><span>${data.eventtitle}</span></li>
+            <li><span>事件时间 ：</span><span>${data.dwAbsTime}</span></li>
             <li><span>所属路段 ：</span><span>杨高南路</span></li>
-            <li><span>事件状态 ：</span><span>事故车</span></li>
+            <li><span>事件状态 ：</span><span>${data.eventStatus == 1? '已处置' :'未处置'}</span></li>
         </ul>
         <div class="popup-content-bottom">
             <div>实时</div>

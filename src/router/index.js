@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
 import { Spin, ConfigProvider } from 'antd';
-import zhCN from 'antd/es/locale/zh_CN';
 import '../index.css'
 
 const Home = React.lazy(() => import('../pages/index'));
@@ -16,13 +15,11 @@ const SuspenseComponent = (Component) => (
 )
 
 const BasicRoute = () => (
-  <ConfigProvider locale={zhCN}>
     <HashRouter>
       <Switch>
         <Route exact path="/" component={SuspenseComponent(Home)} />
       </Switch>
     </HashRouter>
-  </ConfigProvider>
 );
 
 

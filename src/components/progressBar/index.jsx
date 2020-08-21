@@ -2,62 +2,76 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types'
 import { DatePicker, TimePicker, Button, Slider, Space } from 'antd';
+import { PlayCircleOutlined } from '@ant-design/icons';
 import PauseImg from '../../assets/imgs/pause.png';
 import RefreshImg from '../../assets/imgs/refresh.png';
 import './index.scss';
+import { observer, inject } from 'mobx-react';
 
-
-export default class ProgressBar extends Component {
+@inject('CommonStore')
+@observer
+class ProgressBar extends Component {
     constructor(props) {
         super(props)
-    }
-
-    onDateChange = (date, dateString) => {
-        console.log(date, dateString);
-    }
-
-    onTimeChange = (time, timeString) => {
-        console.log(time, timeString);
     }
 
     render() {
         // const { columns, data, title } = this.props;
         const format = 'HH:mm';
+        const { CommonStore } = this.props;
+        const { dateValue, isPlay, max, sliderValue, timeValue, isReal, startTime, endTime, speed } = CommonStore;
         return (
             <div className="progress-bar">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Space>
-                        <DatePicker onChange={this.onDateChange} />
-                        <TimePicker
+                        <DatePicker value={dateValue} onChange={CommonStore.onDateChange} />
+                        <TimePicker.RangePicker
                             className="time-picker"
-                            onChange={this.onTimeChange}
-                            defaultValue={moment('00:00', 'HH:mm')}
+                            onChange={CommonStore.onTimeChange}
                             format='HH:mm'
+                            value={timeValue}
                         />
-                        <Button type="primary">实时</Button>
+                        {
+                            (isReal === 0) &&
+                            (
+                                <Button type="primary" onClick={() => {
+                                    CommonStore.onTimeChange()
+                                }}>实时</Button>
+                            )
+                        }
                     </Space>
-                    <Space>
-                        <div className="play-btn">
-                            <img src={RefreshImg} alt="" />
-                        </div>
-                        <div className="play-btn">
-                            <img src={PauseImg} alt="" />
-                        </div>
-                        <div className="play-btn2">
-                            倍速
-                        </div>
-                    </Space>
-                </div>
+                    {
+                        (isReal === 0) &&
+                        (
+                            <Space>
+                                <div className="play-btn" onClick={CommonStore.onRefresh}>
+                                    <img src={RefreshImg} alt="" />
+                                </div>
+                                {
+                                    isPlay ? (
+                                        <div className="play-btn" onClick={CommonStore.onRoadEventPaused}>
+                                            <img src={PauseImg} alt="" />
+                                        </div>
+                                    ) : (
+                                            <div className="play-btn" onClick={CommonStore.onRoadEventPlay}>
+                                                <PlayCircleOutlined className="icon-style" />
+                                            </div>
+                                        )
+                                }
+                                <div className="play-btn2" onClick={CommonStore.changeSpeed}>
+                                    {speed}倍速
+                            </div>
+                            </Space>
+                        )
+                    }
 
-                <br></br>
+                </div>
                 <div className="silider">
-                    <div className="time-start">8:00</div>
-                    <Slider tipFormatter={null}></Slider>
-                    <div className="time-end">9:00</div>
+                    <div className="time-start">{startTime ? startTime : '-- : --'}</div>
+                    <Slider disabled={isReal === 1} onChange={CommonStore.onSliderChange} value={sliderValue} max={max} tipFormatter={null}></Slider>
+                    {/* <Progress percent={30} strokeWidth={4} /> */}
+                    <div className="time-end">{endTime ? endTime : '-- : --'}</div>
 
-                </div>
-                <div className="current-road">
-                    广东路-广东路这是一段很长很长很长很长出差出差出差出差很长很长很长的路段…
                 </div>
             </div>
         )
@@ -66,7 +80,6 @@ export default class ProgressBar extends Component {
 }
 
 ProgressBar.propTypes = {
-    // title: PropTypes.string,
-    // columns: PropTypes.array,
-    // data: PropTypes.array,
 }
+
+export default ProgressBar;

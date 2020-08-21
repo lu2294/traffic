@@ -1,0 +1,56 @@
+.home-icon-wrapper {
+    position: fixed;
+    z-index: 9999;
+    bottom: -60px;
+    transition: 0.5s bottom linear;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 492px;
+    height: 82px;
+    background: url("../../../assets/imgs/home_bg_circle.svg") no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    .home-icon {
+        width: 56px;
+        height: 52px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+}
+
+.other-icon-wrapper {
+    opacity: 0;
+    transition: 0.5s opacity linear;
+    position: fixed;
+    z-index: 9998;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    .icon-style {
+        width: 138px;
+        height: 188px;
+    }
+    .icon_2D {
+        transform: translate(-50%, -15%);
+    }
+    .icon_3D {
+        transform: translate(-25%, -50%);
+    }
+    .icon_AR {
+        transform: translate(25%, -50%);
+    }
+
+    .icon_trafic {
+        transform: translate(50%, -15%);
+    }
+}
+
+.home-icon-wrapper:hover {
+    bottom: 0px;
+}
+
+.home-icon-wrapper:hover + .other-icon-wrapper {
+    opacity: 1;
+    transition: 0.5s opacity linear;
+}

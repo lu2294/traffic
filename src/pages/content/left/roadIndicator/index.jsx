@@ -1,61 +1,79 @@
 import React, { Component } from 'react';
-import SearchBar from '../../../../components/searchBar'
-import Card from '../../../../components/card'
-import ScrollTable from '../../../../components/scrollTable'
+import { observer, inject } from 'mobx-react';
+import SearchBar from '../../../../components/searchBar';
+import Card from '../../../../components/card';
+import ScrollTable from '../../../../components/scrollTable';
 import ProgressBar from '../../../../components/progressBar';
-import closeImg from '../../../../assets/imgs/close.svg'
-import openImg from '../../../../assets/imgs/open.svg'
+import closeImg from '../../../../assets/imgs/close.svg';
+import openImg from '../../../../assets/imgs/open.svg';
 import './index.scss';
+import { Spin, Space } from 'antd';
 
-export default class RoadIndicator extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            visible: true,
-            collapsable: true
-        }
-    }
-    handleSearch = () => {
-        console.log('handleSearch')
+
+@inject('CommonStore', 'RoadIndicatorStore')
+@observer
+class RoadIndicator extends Component {
+    onFixedLocation = (record) => {
+        const data = [record.lng, record.lat];
+        const map = window.map;
+        map && map.flyTo({
+            center: data,
+            zoom: 18,
+            bearing: 0,
+            speed: 1,
+            curve: 1,
+            easing: function (t) { return t; }
+        });
+        this.props.RoadIndicatorStore.fixedLocation();
     }
     render() {
-        const columns = [
+        const { CommonStore, RoadIndicatorStore } = this.props;
+        const { collapsed, onExpandPanel, onShowSection, hideRoadPanel } = RoadIndicatorStore;
+        const roadColumns = [
             {
                 title: '指数',
-                dataIndex: 'name',
+                dataIndex: 'effIndex',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
-                        <span className="text-red">{text}</span>
-                        // <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
+                        <span className={text > 30 ? (text > 60 ? "text-green" : "text-yellow") : "text-red"}>
+                            {Number(text).toFixed(2)}
+                            {text > 30 ? (text > 60 ? "畅通" : "缓行") : "拥堵"}
+                        </span>
                     )
                 }
             },
             {
                 title: '道路全长',
-                dataIndex: 'age',
+                dataIndex: 'roadLength',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">{text}m</span>
+                        // <span className="text-yellow">{(text / 1000).toFixed(2)}km</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '平均时速',
-                dataIndex: 'address',
+                dataIndex: 'avgSpeed',
+                width: '18%',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">{text.toFixed(1)}km/h</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '在途量/承载力',
-                dataIndex: 'address',
+                width: '18%',
+                align: 'center',
+                dataIndex: 'bearingCapacity',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
@@ -66,7 +84,8 @@ export default class RoadIndicator extends Component {
             },
             {
                 title: '路段数',
-                dataIndex: 'address',
+                align: 'center',
+                dataIndex: 'roadSectionNum',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
@@ -77,7 +96,9 @@ export default class RoadIndicator extends Component {
             },
             {
                 title: '拥堵路段数',
-                dataIndex: 'address',
+                width: '15%',
+                align: 'center',
+                dataIndex: 'congestedRoadNum',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
@@ -88,7 +109,8 @@ export default class RoadIndicator extends Component {
             },
             {
                 title: '事件数',
-                dataIndex: 'address',
+                dataIndex: 'eventNum',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
@@ -99,33 +121,38 @@ export default class RoadIndicator extends Component {
             },
             {
                 title: '操作',
-                dataIndex: 'address',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <a className="text-red">{text}</a>
-                        <a className="text-blue">详情</a>
+                        <a className="text-blue" onClick={() => onShowSection(record, 1)}>详情</a>
                         // <span className="text-yellow">{text}</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
         ];
-        const columns2 = [
+        const sectionColumns = [
             {
                 title: '指数',
-                dataIndex: 'name',
+                dataIndex: 'effIndex',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
-                        // <a className="text-red">{text}</a>
-                        // <a className="text-blue">详情</a>
-                        <span className={index % 2 == 0 ? 'text-yellow' : 'text-green'}>{text}</span>
-                        // <span className="text-blue">{text}</span>
+                        <>
+                            <span className={text > 30 ? (text > 60 ? "text-green" : "text-yellow") : "text-red"}>
+                                {Number(text).toFixed(2)}
+                                {text > 30 ? (text > 60 ? "畅通" : "缓行") : "拥堵"}
+                            </span>
+                        </>
                     )
                 }
             },
             {
-                title: '道路名称',
-                dataIndex: 'age',
+                title: '路段名称',
+                dataIndex: 'rdsegName',
+                align: 'center',
+                width: '24%',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
@@ -135,208 +162,204 @@ export default class RoadIndicator extends Component {
                 }
             },
             {
-                title: '道路长度',
-                dataIndex: 'address',
+                title: '路段长度',
+                dataIndex: 'rdsegLen',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">{text}m</span>
+                        // <span className="text-yellow">{(text / 1000).toFixed(2)}km</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
-                title: '实时均数',
-                dataIndex: 'address',
+                title: '实时均速',
+                dataIndex: 'avgRdsegRoadSpeed',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">{text.toFixed(1)}km/h</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
-                title: '拥堵时间(本周平均每日)',
-                dataIndex: 'address',
+                title: '拥堵时间(本周日均)',
+                dataIndex: 'congestionTime',
+                align: 'center',
+                width: '15%',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow" > {text ? text : '0'}h </span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '事件数',
-                dataIndex: 'address',
+                dataIndex: 'rdsegRoadEventNum',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
+                        <span className="text-yellow" > {text ? text : '0'} </span>
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '操作',
-                dataIndex: 'address',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
-                        <a className="text-blue">详情</a>
+                        <a className="text-blue" onClick={() => onShowSection(record, 0)}>详情</a>
                     )
                 }
             },
         ];
-        const columns3 = [
+        const crossingColumns = [
             {
-                title: '评级',
-                dataIndex: 'name',
+                title: '序号',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
-                        // <a className="text-red">{text}</a>
-                        // <a className="text-blue">详情</a>
-                        <span className={index % 2 == 0 ? 'text-red' : 'text-green'}>{text}</span>
-                        // <span className="text-blue">{text}</span>
+                        <span>{index + 1}</span>
                     )
                 }
             },
             {
-                title: '道路名称',
-                dataIndex: 'age',
+                title: '路口名称',
+                align: 'center',
+                dataIndex: 'interName',
+                width: '30%',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">{text && text.replace('与', '-')}</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '排队长度',
-                dataIndex: 'address',
+                align: 'center',
+                dataIndex: 'queueLength',
                 render: (text, record, index) => {
                     return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
+                        // <span className="text-yellow">{text}米</span>
+                        <span className="text-yellow">--</span>
                     )
                 }
             },
             {
                 title: '是否溢出',
-                dataIndex: 'address',
+                align: 'center',
+                dataIndex: 'interOverflow',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">--</span>
+                        // <span className="text-yellow">{text ? '是' : '否'}</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '饱和度',
-                dataIndex: 'address',
+                align: 'center',
+                dataIndex: 'saturation',
                 render: (text, record, index) => {
                     return (
+                        <span className="text-yellow">--</span>
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        // <span className="text-yellow">{text}</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '拥堵方向数/ 方向总数',
-                dataIndex: 'address',
+                width: '15%',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
                         // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
+                        <span className="text-yellow">--/{record.directionNum}</span>
+                        // <span className="text-yellow">{record.congestionDirectionNum}/{record.directionNum}</span>
                         // <span className="text-blue">{text}</span>
                     )
                 }
             },
             {
                 title: '操作',
-                dataIndex: 'address',
+                align: 'center',
                 render: (text, record, index) => {
                     return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
+                        <a className="text-blue" onClick={() => this.onFixedLocation(record)}>定位</a>
                     )
                 }
             },
         ];
-        const columns4 = [
+
+        const allRoadsColums = [
             {
-                title: '评级',
-                dataIndex: 'name',
+                title: '序号',
+                render: (text, record, index) => {
+                    return <span>{index + 1}</span>
+                }
             },
             {
                 title: '道路名称',
-                dataIndex: 'age',
-            },
-            {
-                title: '排队长度',
-                dataIndex: 'address',
-            },
-            {
-                title: '是否溢出',
-                dataIndex: 'address',
-            },
-            {
-                title: '饱和度',
-                dataIndex: 'address',
+                width: '90%',
+                render: (text, record, index) => {
+                    return <a className="text-yellow">{record.roadName} ({record.direction})</a>
+                }
             }
-        ];
-        const data = [];
-        for (let i = 0; i < 10; i++) {
-            data.push({
-                key: i,
-                name: `${i}`,
-                age: 32,
-                address: `道路${i}`,
-            });
-        }
-        const data2 = [];
-        for (let i = 0; i < 1; i++) {
-            data2.push({
-                key: i,
-                name: `${i}`,
-                age: 32,
-                address: `道路${i}`,
-            });
-        }
+        ]
         return (
-            <div className="roadIndicator">
-                <Card title="道路运行指标">
-                    <SearchBar handleSearch={this.handleSearch} placeHolder={"请输入道路名称"}></SearchBar>
+            <div className={hideRoadPanel ? "roadIndicator left-hide" : "roadIndicator"}>
+                {/* <Spin> */}
+                <Card title="道路运行指标" isHide onHide={RoadIndicatorStore.onHide}>
+                    <SearchBar placeHolder="请输入道路名称" handleSearch={RoadIndicatorStore.searchRoad}></SearchBar>
                     <ProgressBar />
-                    <ScrollTable title={'全道路指标'} columns={columns} data={data2}></ScrollTable>
+                    {RoadIndicatorStore.showSearchResult && (
+                        <ScrollTable onRow={RoadIndicatorStore.selectCurrentRoad} rowKey={(record) => { return record.roadName + record.direction }} columns={allRoadsColums} data={RoadIndicatorStore.searchRoadData}></ScrollTable>
+                    )}
+
                     {
-                        !this.state.collapsable &&
+                        !RoadIndicatorStore.showSearchResult &&
                         (
                             <>
-                                <ScrollTable title={'路段'} columns={columns2} data={data}></ScrollTable>
-                                <ScrollTable title={'路口'} columns={columns3} data={data}></ScrollTable>
+                                <div className="current-road">
+                                    {CommonStore.currentRoad}
+                                </div>
+                                <ScrollTable title={'全道路指标'} rowKey="droadId" columns={roadColumns} data={CommonStore.roadData}></ScrollTable>
+                                <div className={!collapsed ? "show-part" : "hide-part"}>
+                                    <>
+                                        <ScrollTable rowKey="rdsegId" title={'路段'} columns={sectionColumns} data={CommonStore.rdsegInfoList}></ScrollTable>
+                                        <ScrollTable rowKey="interId" title={'路口'} columns={crossingColumns} data={CommonStore.interList}></ScrollTable>
+                                    </>
+                                </div>
+                                <div className="image-wrapper" onClick={onExpandPanel}>
+                                    {!collapsed ? (<img src={closeImg} className="image-svg" />) : (
+                                        <img src={openImg} className="image-svg" />
+                                    )}
+                                </div>
                             </>
                         )
                     }
-                    <div className="image-warpper" onClick={() => {
-                        this.setState({
-                            collapsable: !this.state.collapsable
-                        })
-                    }}>
-                        {this.state.collapsable ? (<img src={openImg} className="image-svg" />) : (
-                            <img src={closeImg} className="image-svg" />
-                        )}
-                    </div>
                     <div className="top-margin"></div>
-
                 </Card>
-            </div>
+                {/* </Spin> */}
+
+            </div >
         )
 
     }
 }
+
+export default RoadIndicator;

@@ -1,0 +1,20 @@
+.toggle-right-wrapper {
+  position: fixed;
+  top: 140px;
+  right: 0;
+  width: 40px;
+  height: 166px;
+  background: rgba(3, 16, 51, 0.7);
+  border: 2px solid rgba(2, 77, 134, 1);
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: PingFangSC-Semibold;
+  line-height: 26px;
+  color: #00c8d1;
+  text-align: center;
+  display: block;
+  transition: 1s display linear;
+}
+.toggle-right-hide {
+  display: none;
+}

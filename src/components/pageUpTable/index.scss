@@ -38,9 +38,12 @@
 
     .ant-table {
         background: transparent;
-        // border: 1px solid red;
-        // border: 1px solid #316bbd;
-        // border-left: none;
+        .ant-table-placeholder {
+            .ant-table-cell {
+                background: transparent;
+                color: #fff;
+            }
+        }
     }
 
     .ant-table.ant-table-bordered > .ant-table-title {
@@ -74,14 +77,14 @@
         border: 1px solid rgba(36, 78, 128, 1);
         background: transparent;
         color: #ffffff;
-        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset, rgba(68, 113, 240, 0.5) -2px -2px 7px inset;
     }
 
     .ant-pagination-prev:hover button,
     .ant-pagination-next:hover button {
         border-color: rgba(36, 78, 128, 1);
     }
-    
+
     .btn-style {
         padding: 0 8px;
         line-height: 24px;
@@ -89,6 +92,6 @@
         border: 1px solid rgba(36, 78, 128, 1);
         background: transparent;
         color: #ffffff;
-        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset;
+        box-shadow: rgba(68, 113, 240, 0.5) 2px 2px 7px inset, rgba(68, 113, 240, 0.5) -2px -2px 7px inset;
     }
 }

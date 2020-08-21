@@ -9,6 +9,8 @@
   <script type="text/javascript" src="%PUBLIC_URL%/js/amap-gl.js"></script>
   <link rel="stylesheet" href="%PUBLIC_URL%/mapbox-gl.css">
   <link href='%PUBLIC_URL%/plb.css' rel='stylesheet' />
+  <link rel="stylesheet" href="de/prismplayer/2.7.2/skins/default/aliplayer.css" />
+<link rel="stylesheet" href="css/index.css" />
   <style>
     * {
       margin: 0;
@@ -19,6 +21,51 @@
     body {
       height: 100%;
     }
+    /* #video-slot1 {
+      z-index: 1002;
+      position: absolute;
+      top: 220px;
+      left: 2040px;
+      width: 440px;
+      height: 320px;
+      background: rgba(3,16,51,0.70);
+      border: 2px solid rgba(2,77,134,1);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #video-slot2 {
+      z-index: 1002;
+      position: absolute;
+      top: 540px;
+      left: 2040px;
+      width: 440px;
+      height: 320px;
+      background: rgba(3,16,51,0.70);
+      border: 2px solid rgba(2,77,134,1);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .video-title {
+        width: 100%;
+        padding-left: 16px;
+        font-family: PingFangSC-Semibold;
+        font-size: 24px;
+        color:#00C8D1;
+        background-color: rgba(36,78,128,0.5);
+        height: 40px;
+        line-height: 40px;
+    }
+    .video-close {
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      right: 12px;
+      top: 12px;
+     
+    } */
+    /* #J_prismPlayer {
+     
+    } */
   </style>
   <title>黄浦公安智慧交通可视化平台</title>
 </head>
@@ -26,19 +73,42 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+ 
+  <!-- <div id="video-slot1">
+    <div class="video-title">雷视视频1</div>
+    <a class="video-close" onclick="let video_slot1 = document.getElementById('video-slot1');video_slot1.style.display = 'none';">
+
+      <img src="./close.png"  alt="close">
+    </a>
+    <div  class="prism-player video-container" id="J_prismPlayer"></div>
+  </div>
+
+  <div id="video-slot2">
+    <div class="video-title">雷视视频2</div>
+    <a class="video-close" onclick="let video_slot2 = document.getElementById('video-slot2');video_slot2.style.display = 'none';">
+
+      <img src="./close.png"  alt="close">
+    </a>
+    <div  class="prism-player video-container" id="J_prismPlayer1"></div>
+  </div> -->
+  
 </body>
 
 <script src="%PUBLIC_URL%/js/three.min.js"></script>
 <script src="%PUBLIC_URL%/js/jquery-3.5.0.min.js"></script>
+<script src="%PUBLIC_URL%/js/MTLLoader.js"></script>
 <script src="%PUBLIC_URL%/js/OBJLoader.js"></script>
+<script src="%PUBLIC_URL%/js/GLTFLoader.js"></script>
 <script src="%PUBLIC_URL%/js/carsimulates.js"></script>
 <script src="%PUBLIC_URL%/js/plb.js"></script>
+<script src="de/prismplayer/2.7.2/aliplayer.js"></script>
 
 <script>
   (function (doc, win) {
     let fn = () => { let docEl = doc.documentElement, clientWidth = docEl.clientWidth; if (!clientWidth) return; docEl.style.fontSize = 100 * (clientWidth / 3840) + 'px'; }
     if (!doc.addEventListener) return; win.addEventListener('resize', fn); doc.addEventListener('DOMContentLoaded', fn);
   })(document, window);
+  // window.Aliplayer = Aliplayer || function(){};
 </script>
 
 

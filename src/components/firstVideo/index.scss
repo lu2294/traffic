@@ -1,0 +1,34 @@
+#video-slot1 {
+  z-index: 1002;
+  position: absolute;
+  top: 220px;
+  left: 2040px;
+  width: 440px;
+  height: 320px;
+  background: rgba(3, 16, 51, 0.7);
+  border: 2px solid rgba(2, 77, 134, 1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.video-title {
+  width: 100%;
+  padding-left: 16px;
+  font-family: PingFangSC-Semibold;
+  font-size: 24px;
+  color: #00c8d1;
+  background-color: rgba(36, 78, 128, 0.5);
+  height: 40px;
+  line-height: 40px;
+}
+.video-close {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  right: 12px;
+  top: 12px;
+}
+
+.new-player {
+  width: 440px !important;
+  height: 280px !important;
+}

@@ -1,243 +1,120 @@
 import React, { Component } from 'react';
-import './index.scss';
+import { observer, inject } from 'mobx-react';
 import { Space } from 'antd';
 import PageUpTable from '../../../../components/pageUpTable';
 import Card from '../../../../components/card';
+import './index.scss';
 
-
-export default class SectionDetail extends Component {
+@inject('RoadIndicatorStore')
+@observer
+class VehicleDetail extends Component {
     constructor(props) {
         super(props)
         this.state = {
             title: '车辆详情'
         }
     }
+
+    componentDidMount() {
+        // this.props.RoadIndicatorStore.selectVehicleInfo();
+    }
+
     render() {
-        const columns2 = [
+        const { RoadIndicatorStore } = this.props;
+        const { onShowVehicle, vehicleDetailData } = RoadIndicatorStore;
+        const columns = [
             {
-                title: '指数',
-                dataIndex: 'name',
-                render: (text, record, index) => {
-                    return (
-                        // <a className="text-red">{text}</a>
-                        // <a className="text-blue">详情</a>
-                        <span className={index % 2 == 0 ? 'text-yellow' : 'text-green'}>{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
+                title: '序号',
+                render: (data, record, index) => {
+                    return index + 1
                 }
             },
             {
-                title: '道路名称',
-                dataIndex: 'age',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
+                title: '姓名',
+                dataIndex: 'dsr',
+                render: (text) => {
+                    return <span className='text-yellow'>{text}</span>
+                },
+                ellipsis: true
             },
             {
-                title: '道路长度',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
+                title: '电话号码',
+                dataIndex: 'dh',
+                render: (text) => {
+                    return <span className='text-yellow'>{text}</span>
+                },
             },
             {
-                title: '实时均数',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
+                title: '违法记录(最近一年)',
+                dataIndex: 'wfjl',
+                render: (text) => {
+                    return <span className='text-yellow'>{text}</span>
+                },
+                ellipsis: true
             },
             {
-                title: '拥堵时间(本周平均每日)',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
+                title: '最近违法日期',
+                dataIndex: 'wfsj',
+                render: (text) => {
+                    return <span className='text-yellow'>{text}</span>
+                },
+                ellipsis: true
             },
             {
-                title: '事件数',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '操作',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        <a className="text-blue">详情</a>
-                    )
-                }
-            },
-        ];
-        const columns4 = [
-            {
-                title: '评级',
-                dataIndex: 'name',
-            },
-            {
-                title: '道路名称',
-                dataIndex: 'age',
-            },
-            {
-                title: '排队长度',
-                dataIndex: 'address',
-            },
-            {
-                title: '是否溢出',
-                dataIndex: 'address',
-            },
-            {
-                title: '饱和度',
-                dataIndex: 'address',
+                title: '最近违法详情',
+                // width: '10%',
+                dataIndex: 'wfms',
+                render: (text) => {
+                    return <span className='text-yellow'>{text}</span>
+                },
+                ellipsis: true
             }
         ];
-        const columns3 = [
-            {
-                title: '评级',
-                dataIndex: 'name',
-                render: (text, record, index) => {
-                    return (
-                        // <a className="text-red">{text}</a>
-                        // <a className="text-blue">详情</a>
-                        <span className={index % 2 == 0 ? 'text-red' : 'text-green'}>{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '道路名称',
-                dataIndex: 'age',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '排队长度',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '是否溢出',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '饱和度',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '拥堵方向数/ 方向总数',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-            {
-                title: '操作',
-                dataIndex: 'address',
-                render: (text, record, index) => {
-                    return (
-                        // <span className="text-red">{text}</span>
-                        <span className="text-yellow">{text}</span>
-                        // <span className="text-blue">{text}</span>
-                    )
-                }
-            },
-        ];
-        const data = [];
-        for (let i = 0; i < 10; i++) {
-            data.push({
-                key: i,
-                name: `${i}`,
-                age: 32,
-                address: `道路${i}`,
-            });
-        }
+
         return (
             <div className="vehicle-detail">
-                <Card title={this.state.title} closable>
+                <Card title={this.state.title} onClose={onShowVehicle} closable>
                     <div className="vehicle-info">
                         <div className="vehicle-title">车辆信息</div>
                         <div className="vehicle-content">
                             <div className="content-item">
                                 <Space>
                                     <span>车牌号:</span>
-                                    <span>沪A12345</span>
+                                    <span>{vehicleDetailData.dwjjdd?.jdchphm}</span>
                                 </Space>
                             </div>
                             <div className="content-item">
                                 <Space>
-                                    <span>车牌号:</span>
-                                    <span>沪A12345</span>
+                                    <span>车主属性:</span>
+                                    <span>{vehicleDetailData.dwjjdd?.jdcsyq}</span>
                                 </Space>
                             </div>
                             <div className="content-item">
                                 <Space>
-                                    <span>车牌号:</span>
-                                    <span>沪A12345</span>
+                                    <span>单位名称:</span>
+                                    <span>{vehicleDetailData.dwjjdd?.jdcsyrmc}</span>
                                 </Space>
                             </div>
                             <div className="content-item">
                                 <Space>
-                                    <span>车牌号:</span>
-                                    <span>沪A12345</span>
+                                    <span>联系电话</span>
+                                    <span>{vehicleDetailData.dwjjdd?.lxdh}</span>
+                                </Space>
+                            </div>
+                            <div className="content-item">
+                                <Space>
+                                    <span>联系地址:</span>
+                                    <span>{vehicleDetailData.dwjjdd?.zsdzmc}</span>
                                 </Space>
                             </div>
                         </div>
                     </div>
-                    <PageUpTable title={'驾驶员信息'} columns={columns2} data={data}></PageUpTable>
+                    <PageUpTable title={'驾驶员信息'} columns={columns} data={vehicleDetailData.violationList}></PageUpTable>
                 </Card>
             </div>
         )
 
     }
 }
+
+export default VehicleDetail;

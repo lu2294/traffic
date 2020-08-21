@@ -9,10 +9,12 @@ const defaultPostConfig = {
 
 }
 request.get = (url, config) => axios.get(url, {
-    ...defaultGetConfig,
-    ...config
-    }
+    params: {
+        ...defaultGetConfig,
+        ...config
+    }}
 )
+
 request.post = (url, config) => axios.post(url, {
     ...defaultPostConfig,
     ...config

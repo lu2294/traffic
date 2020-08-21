@@ -2,7 +2,6 @@
   "name": "hp_qxlw",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.168.137.1:8080",
   "dependencies": {
     "@babel/core": "7.8.4",
     "@babel/plugin-proposal-decorators": "^7.8.3",
@@ -40,6 +39,7 @@
     "fs-extra": "^8.1.0",
     "gas.gl": "^3.5.45",
     "html-webpack-plugin": "4.0.0-beta.11",
+    "http-proxy-middleware": "^1.0.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
@@ -70,9 +70,11 @@
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
+    "styled-components": "^5.1.1",
     "terser-webpack-plugin": "2.3.4",
     "ts-pnp": "1.1.5",
     "url-loader": "2.3.0",
+    "video-react": "^0.14.1",
     "webpack": "4.41.5",
     "webpack-dev-server": "3.10.2",
     "webpack-manifest-plugin": "2.2.0",
@@ -162,7 +164,6 @@
     ]
   },
   "devDependencies": {
-    "http-proxy-middleware": "^1.0.5",
     "postcss-pxtorem": "^5.1.1"
   }
 }
